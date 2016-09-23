@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="unnamed">
+    <output-path>$PROJECT_DIR$/out/artifacts/unnamed</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="untitled1/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="untitled1" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="postgresql-9.3-1103.jdbc3" />
+          <element id="library" level="project" name="jstl-1.2" />
+          <element id="library" level="project" name="Maven: org.neo4j.driver:neo4j-java-driver:1.0.3" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
