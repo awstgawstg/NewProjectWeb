@@ -35,6 +35,7 @@ public class GraphConfig {
     }
 
 
+
     public void deleteRelation(String db1, int db1Key, String db1Name, String table1,String db1Type, String db2,int db2Key,String db2Name,String table2 ,String db2Type, String relation) throws IOException {
         if(!checkNode(db1,db1Key,db1Name,table1,db1Type))
             return;
@@ -65,7 +66,13 @@ public class GraphConfig {
     }
 
 
+    public StatementResult runQuery(String query){
+        StatementResult result =  session.run(query);
+        session.close();
+        driver.close();
+        return result;
 
+    }
 
 
 
