@@ -11,17 +11,63 @@
 
 <html>
 <head>
-    <link href="style.css" rel="stylesheet" />
-    <meta charset=utf-8 />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
-    <title>Virus Comming!!</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js"></script>
-    <script src="code.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <title></title>
 </head>
 <body>
-<div id="cy"></div>
+
+<%
+    databaseConfig gettable = new databaseConfig();
+%>
+
+<form action="${pageContext.request.contextPath}/myservlet" method="post">
+    <div>
+
+        <span>Choose table</span>
+        <select id = "selectTable1" name = "selectTable1" onchange="if (this.selectedIndex) tableSelected(this.selectedIndex)">
+            <option value=""><%
+                ArrayList<String> tables =  gettable.getTables();
+                for(int i =0;i<tables.size();i++){
+                String tmp = tables.get(i);
+                out.print("<option value=\""+tmp+"\">"+tmp+"</option>");
+
+                }
+            %>
+        </select>
+
+
+        <select id = "selectTable2" name = "selectTable2" onchange="if (this.selectedIndex) tableSelected(this.selectedIndex)">
+            <option value=""><%
+                for(int i =0;i<tables.size();i++){
+                String tmp = tables.get(i);
+                out.print("<option value=\""+tmp+"\">"+tmp+"</option>");
+
+                }
+            %>
+        </select>
+
+        <button name="button" value="createRelation">Create Relation</button>
+
+    </div>
+    <div>
+    </div>
+
+</form>
+
+
+
+
+
+
+<script>
+
+
+
+
+</script>
 </body>
+
 </html>
 
 
