@@ -24,10 +24,13 @@ public class demoProject {
         //tmp.createRelation("server1","dataset1",1,1);
         //tmp.userAction("user2",2,"server1",1,"dataset1",1);
 
+    }
 
-
+    public void createLeaderNode(String db, int key, String dbName, String table, String dbType,String[] nodesinfo){
 
     }
+
+
      public void createNode(String db, int key, String dbName, String table, String dbType) throws IOException {
          GraphConfig ini = new GraphConfig();
          ini.createNode(db,key,dbName,table,dbType);
