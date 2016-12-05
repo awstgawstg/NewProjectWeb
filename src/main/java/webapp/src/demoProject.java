@@ -24,9 +24,6 @@ public class demoProject {
         //tmp.createRelation("server1","dataset1",1,1);
         //tmp.userAction("user2",2,"server1",1,"dataset1",1);
 
-    }
-
-    public void createLeaderNode(String db, int key, String dbName, String table, String dbType,String[] nodesinfo){
 
     }
 
@@ -73,9 +70,18 @@ public class demoProject {
     public void createRelation(String Name1,String Name2,int key1,int key2)throws IOException{
         GraphConfig ini = new GraphConfig();
         ini.createOrUpdateRelation("Graphdatabse", key1, Name1, "server", "server", "Graphdatabse", key2, Name2, "dataset", "dataset", "connect");
+    }
 
+
+    public void createRelationLeader(String Name1,String Name2,int key1,int key2,String type2)throws IOException{
+        GraphConfig ini = new GraphConfig();
+        ini.createOrUpdateRelation("Graphdatabse", key1, Name1, "leader", "leader", "Graphdatabse", key2, Name2, type2, type2, "leads");
+    }
+
+    public void searchNode(String Name1,String Name2){
 
     }
+
 
     public void userAction(String userName, int userKey,String serverName,int serverKey, String dataSetName,int dataSetKey)throws IOException{
         GraphConfig ini = new GraphConfig();
