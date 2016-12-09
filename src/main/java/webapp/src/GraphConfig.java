@@ -200,10 +200,27 @@ public class GraphConfig {
     }
 
 
-    public void findleaderpath(String leader1, String leader2) {
+    public String findleaderpath(String leader1, String leader2,String path) {
         String relationQuery = "MATCH (a)-[rel:leaderrel]->(b)" +
                 "Where a.name = '"+leader1+"' b.name = '" + leader2 + "' return rel";
         StatementResult result = session.run(relationQuery);
 
+
+        while (1 == 1) {
+            if (!result.hasNext()) {
+                break;
+            }
+            Record record = result.next();
+            String nextname = record.get("data").get("name").toString().replace("\"", "");
+            if (nextname.equals(leader2)) {
+                return path + " " + nextname;
+            } else {
+                findleaderpath(nextname, leader2, path + " " + nextname);
+            }
+
+        }
+        return null;
     }
+
+
 }
