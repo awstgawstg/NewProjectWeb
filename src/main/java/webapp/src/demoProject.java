@@ -79,6 +79,10 @@ public class demoProject {
     }
 
     public void searchNode(String Name1,String Name2){
+        GraphConfig ini = new GraphConfig();
+        String Leader1 = ini.findLeaderNode(Name1);
+        String Leader2 = ini.findLeaderNode(Name2);
+        ini.findleaderpath(Leader1,Leader2);
 
     }
 

@@ -21,7 +21,7 @@ public class GraphConfig {
                 "b.table = '" + table2 + "' and b.key=" + db2Key + " set rel.weight = rel.weight+1 return rel";
         StatementResult result = session.run(relationQuery);
         if (result.hasNext()) {
-           return;
+            return;
         }
 
         if (!checkNode(db1, db1Key, db1Name, table1, db1Type)) {
@@ -40,7 +40,6 @@ public class GraphConfig {
         driver.close();
 
     }
-
 
 
     public void createRelationOnNodes(String db1, int db1Key, String db1Name, String table1, String db1Type, String db2, int db2Key, String db2Name, String table2, String db2Type, String relation) throws IOException {
@@ -68,9 +67,6 @@ public class GraphConfig {
         driver.close();
 
     }
-
-
-
 
 
     public void createOrUpdateRelation(String db1, int db1Key, String db1Name, String table1, String db1Type, String db2, int db2Key, String db2Name, String table2, String db2Type, String relation) throws IOException {
@@ -127,14 +123,12 @@ public class GraphConfig {
 
             String relationQuery2 = "MATCH (a:" + db1Type + " {name:'" + db1Name + "', database:'" + db1 + "', table:'" + table1 + "', key:" + db1Key + "}), " +
                     "(b:" + db2Type + " {name:'" + db2Name + "', database:'" + db2 + "', table:'" + table2 + "', key:" + db2Key + "})" +
-                    "CREATE (a)-[:" + relation + "{weight:0,recommend:"+step+"}]->(b)";
+                    "CREATE (a)-[:" + relation + "{weight:0,recommend:" + step + "}]->(b)";
             session.run(relationQuery2);
 
         }
 
     }
-
-
 
 
     public void deleteRelation(String db1, int db1Key, String db1Name, String table1, String db1Type, String db2, int db2Key, String db2Name, String table2, String db2Type, String relation) throws IOException {
@@ -194,4 +188,22 @@ public class GraphConfig {
     }
 
 
+    public String findLeaderNode(String Name) {
+        String query =
+                "MATCH (a:leader ) WHERE a.name = '" + Name + "' return a";
+        StatementResult result = session.run(query);
+        if (result.hasNext()) {
+            Record record = result.next();
+            return record.get("name").toString();
+        }
+        return null;
+    }
+
+
+    public void findleaderpath(String leader1, String leader2) {
+        String relationQuery = "MATCH (a)-[rel:leaderrel]->(b)" +
+                "Where a.name = '"+leader1+"' b.name = '" + leader2 + "' return rel";
+        StatementResult result = session.run(relationQuery);
+
+    }
 }
